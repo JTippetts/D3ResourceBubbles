@@ -1,0 +1,8 @@
+<material>
+	<technique name="Techniques/resourcebubble.xml" />
+	<texture unit="0" name="Textures/healthmanaglass.png" />
+	<texture unit="1" name="Textures/healthmanamask.png" />
+	<texture unit="2" name="Textures/noise.png" />
+	<texture unit="3" name="Textures/healthmananormal.png" />
+	<texture unit="4" name="Textures/stars.png" />
+</material>
