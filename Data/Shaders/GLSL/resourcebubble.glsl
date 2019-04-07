@@ -26,14 +26,14 @@ void VS()
 void PS()
 {
 	float level=1.0-cLevel;
-	vec2 newuv=texture(sNormalTex3, vTexCoord).xy;
-	float clip=texture(sClip1, vTexCoord).x;
-	float maskval=vTexCoord.y+texture(sNoise2, vTexCoord+vec2(0.1,0.3)*cElapsedTimePS).x * 0.05;
+	vec2 newuv=texture2D(sNormalTex3, vTexCoord).xy;
+	float clip=texture2D(sClip1, vTexCoord).x;
+	float maskval=vTexCoord.y+texture2D(sNoise2, vTexCoord+vec2(0.1,0.3)*cElapsedTimePS).x * 0.05;
 	float mask=smoothstep(level-0.01, level+0.01, maskval);
 	float glowline=min(smoothstep(level-0.05, level, maskval),
-		smoothstep(level+0.05, level, maskval))*clip*5+1;
+		smoothstep(level+0.05, level, maskval))*clip*5.0+1.0;
 	
-	gl_FragColor=clip * mask * texture(sStars4, newuv + vec2(0.1,0)*cElapsedTimePS) *
-		texture(sStars4, newuv + vec2(0.0107,0.0313)*cElapsedTimePS) * 
-		texture(sStars4, newuv + vec2(-0.0132,-0.021)*cElapsedTimePS) * 4.0 * glowline + texture(sGlass0, vTexCoord);
+	gl_FragColor=clip * mask * texture2D(sStars4, newuv + vec2(0.1,0)*cElapsedTimePS) *
+		texture2D(sStars4, newuv + vec2(0.0107,0.0313)*cElapsedTimePS) * 
+		texture2D(sStars4, newuv + vec2(-0.0132,-0.021)*cElapsedTimePS) * 4.0 * glowline + texture2D(sGlass0, vTexCoord);
 }
